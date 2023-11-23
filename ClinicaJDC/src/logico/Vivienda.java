@@ -3,6 +3,12 @@ package logico;
 import java.util.ArrayList;
 
 public class Vivienda {
+	public Vivienda(String id, ArrayList<Persona> lasPersonas) {
+		super();
+		this.id = id;
+		this.lasPersonas = lasPersonas;
+	}
+	
 	private String id;
 	private ArrayList<Persona>lasPersonas;
 	

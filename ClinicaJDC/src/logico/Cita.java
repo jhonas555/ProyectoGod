@@ -4,6 +4,15 @@ import java.util.Date;
 
 public class Cita {
 	
+	public Cita(String id, Date fecha, Paciente paciente, Doctor doctor) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.paciente = paciente;
+		this.doctor = doctor;
+	}
+
+
 	private String id;
 	private Date fecha;
 	private Paciente paciente;
