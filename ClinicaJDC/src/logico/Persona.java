@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Persona {
 	
+	
 	protected String id;
 	protected String password;
 	protected String cedula;
@@ -13,6 +14,18 @@ public class Persona {
 	protected String telefono;
 	protected String correoElectronico;
 	
+	public Persona(String id, String password, String cedula, String nombre, String apellido, Date fechaNacimiento,
+			String telefono, String correoElectronico) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNacimiento = fechaNacimiento;
+		this.telefono = telefono;
+		this.correoElectronico = correoElectronico;
+	}
 	
 	public String getId() {
 		return id;

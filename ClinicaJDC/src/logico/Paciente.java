@@ -1,14 +1,20 @@
 package logico;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Paciente extends Persona {
-
 	
 	private String numeroSeguro;
 	private boolean Sano;
 	private Historial_Clinica historial;
 	private ArrayList<Vacuna> lasVacunas;
+	
+	public Paciente(String id, String password, String cedula, String nombre, String apellido, Date fechaNacimiento,
+			String telefono, String correoElectronico) {
+		super(id, password, cedula, nombre, apellido, fechaNacimiento, telefono, correoElectronico);
+		// TODO Auto-generated constructor stub
+	}
 	
 	public String getNumeroSeguro() {
 		return numeroSeguro;
