@@ -1,7 +1,10 @@
 package logico;
 
 import java.io.Serializable;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Cita implements Serializable{
 	
@@ -9,6 +12,7 @@ public class Cita implements Serializable{
 
 	private String id;
 	private Date fecha;
+	private Boolean estado;
 	private Paciente paciente;
 	private Doctor doctor;
 	
@@ -19,6 +23,39 @@ public class Cita implements Serializable{
 		this.paciente = paciente;
 		this.doctor = doctor;
 	}	
+	
+	
+	public class GestorCitas {
+
+	    private String archivo = "citas.dat";
+
+	    public void guardarCitas(List<Cita> citas) {
+	        try {
+	            FileOutputStream fos = new FileOutputStream(archivo);
+	            ObjectOutputStream oos = new ObjectOutputStream(fos);
+	            oos.writeObject(citas);
+	            oos.close();
+	            fos.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public List<Cita> cargarCitas() {
+	        List<Cita> citas = new ArrayList<>();
+	        try {
+	            FileInputStream fis = new FileInputStream(archivo);
+	            ObjectInputStream ois = new ObjectInputStream(fis);
+	            citas = (List<Cita>) ois.readObject();
+	            ois.close();
+	            fis.close();
+	        } catch (IOException | ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	        return citas; 
+	    }
+
+	}
 
 	public Cita() {
 	}
@@ -53,5 +90,13 @@ public class Cita implements Serializable{
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 }
