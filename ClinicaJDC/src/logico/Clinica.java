@@ -1,8 +1,17 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Clinica {
+public class Clinica implements Serializable{
+	
+	private static final long serialVersionUID = 5307172532851770925L;
+
+	private ArrayList<Vacuna>lasVacunas;
+	private ArrayList<Vivienda>lasViviendas;
+	private ArrayList<Cita>lasCitas;
+	private ArrayList<Enfermedad>lasEnfermedades;
+	private ArrayList<Persona>lasPersonas;
 	
 	public Clinica(ArrayList<Vacuna> lasVacunas, ArrayList<Vivienda> lasViviendas, ArrayList<Cita> lasCitas,
 			ArrayList<Enfermedad> lasEnfermedades, ArrayList<Persona> lasPersonas) {
@@ -13,12 +22,6 @@ public class Clinica {
 		this.lasEnfermedades = lasEnfermedades;
 		this.lasPersonas = lasPersonas;
 	}
-	
-	private ArrayList<Vacuna>lasVacunas;
-	private ArrayList<Vivienda>lasViviendas;
-	private ArrayList<Cita>lasCitas;
-	private ArrayList<Enfermedad>lasEnfermedades;
-	private ArrayList<Persona>lasPersonas;
 
 	
 	public ArrayList<Vacuna> getLasVacunas() {
@@ -50,5 +53,5 @@ public class Clinica {
 	}
 	public void setLasPersonas(ArrayList<Persona> lasPersonas) {
 		this.lasPersonas = lasPersonas;
-	}
+	}	
 }
