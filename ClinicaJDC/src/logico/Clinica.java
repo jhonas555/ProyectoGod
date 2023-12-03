@@ -5,11 +5,7 @@ import java.util.ArrayList;
 public class Clinica {
 	
 	public Clinica(ArrayList<Vacuna> lasVacunas, ArrayList<Vivienda> lasViviendas, ArrayList<Cita> lasCitas,
-<<<<<<< HEAD
 			ArrayList<Enfermedad> lasEnfermedades, ArrayList<Persona> lasPersonas) {
-=======
-			ArrayList<Enfermedad> lasEnfermedades,  ArrayList<Persona> lasPersonas) {
->>>>>>> branch 'master' of https://github.com/jhonas555/ProyectoGod.git
 		super();
 		this.lasVacunas = lasVacunas;
 		this.lasViviendas = lasViviendas;
@@ -18,26 +14,13 @@ public class Clinica {
 		this.lasPersonas = lasPersonas;
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/jhonas555/ProyectoGod.git
 	private ArrayList<Vacuna>lasVacunas;
 	private ArrayList<Vivienda>lasViviendas;
 	private ArrayList<Cita>lasCitas;
 	private ArrayList<Enfermedad>lasEnfermedades;
 	private ArrayList<Persona>lasPersonas;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/jhonas555/ProyectoGod.git
 	
-<<<<<<< HEAD
-=======
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/jhonas555/ProyectoGod.git
 	public ArrayList<Vacuna> getLasVacunas() {
 		return lasVacunas;
 	}
@@ -68,10 +51,4 @@ public class Clinica {
 	public void setLasPersonas(ArrayList<Persona> lasPersonas) {
 		this.lasPersonas = lasPersonas;
 	}
-<<<<<<< HEAD
-=======
-	
-	
-
->>>>>>> branch 'master' of https://github.com/jhonas555/ProyectoGod.git
 }
