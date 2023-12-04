@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class IniciarSesion extends JFrame {
 
@@ -60,29 +61,33 @@ public class IniciarSesion extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(260, 13, 119, 41);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setBounds(276, 28, 153, 44);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(57, 129, 56, 16);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblContrasea.setBounds(57, 193, 82, 16);
 		panel.add(lblContrasea);
 		
 		textField = new JTextField();
-		textField.setBounds(187, 125, 297, 26);
+		textField.setBounds(167, 121, 320, 34);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(187, 189, 297, 26);
+		textField_1.setBounds(167, 185, 320, 34);
 		panel.add(textField_1);
+		
+		JButton btnNewButton = new JButton("Ingresar");
+		btnNewButton.setBounds(430, 296, 110, 34);
+		panel.add(btnNewButton);
 		
 		
 	}

@@ -65,7 +65,7 @@ public class PrincipalVisual extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu_1 = new JMenu("P\u00E1gina Principal");
+		JMenu mnNewMenu_1 = new JMenu("    P\u00E1gina Principal");
 		menuBar.add(mnNewMenu_1);
 		
 		Dimension currentSize = mnNewMenu_1.getPreferredSize();
@@ -73,7 +73,7 @@ public class PrincipalVisual extends JFrame {
 		int newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_1.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu = new JMenu("Citas");
+		JMenu mnNewMenu = new JMenu("    Citas");
 		mnNewMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -87,7 +87,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnViviendas = new JMenu("Viviendas");
+		JMenu mnViviendas = new JMenu("    Viviendas");
 		menuBar.add(mnViviendas);
 		
 		currentSize = mnViviendas.getPreferredSize();
@@ -95,7 +95,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnViviendas.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_2 = new JMenu("Doctores");
+		JMenu mnNewMenu_2 = new JMenu("    Doctores");
 		menuBar.add(mnNewMenu_2);
 		
 		currentSize = mnNewMenu_2.getPreferredSize();
@@ -103,7 +103,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_2.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_3 = new JMenu("Pacientes");
+		JMenu mnNewMenu_3 = new JMenu("    Pacientes");
 		menuBar.add(mnNewMenu_3);
 		
 		currentSize = mnNewMenu_3.getPreferredSize();
@@ -111,7 +111,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_3.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_4 = new JMenu("Enfermedades");
+		JMenu mnNewMenu_4 = new JMenu("    Enfermedades");
 		menuBar.add(mnNewMenu_4);
 		
 		currentSize = mnNewMenu_4.getPreferredSize();
@@ -119,7 +119,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_4.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_5 = new JMenu("Vacunas");
+		JMenu mnNewMenu_5 = new JMenu("    Vacunas");
 		menuBar.add(mnNewMenu_5);
 		
 		currentSize = mnNewMenu_5.getPreferredSize();
@@ -127,7 +127,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_5.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_6 = new JMenu("Administradores");
+		JMenu mnNewMenu_6 = new JMenu("    Administradores");
 		menuBar.add(mnNewMenu_6);
 		
 		currentSize = mnNewMenu_6.getPreferredSize();
