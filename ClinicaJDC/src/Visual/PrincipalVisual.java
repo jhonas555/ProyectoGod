@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -29,6 +30,7 @@ public class PrincipalVisual extends JFrame {
 	 */
 	public static void main(String[] args) {
 		try {
+			//FlatMaterialLighterIJTheme.setup();
 			UIManager.setLookAndFeel(new FlatDarkLaf());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,6 +146,17 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_7.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Blanco");
+		mntmNewMenuItem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				try {
+					FlatMaterialLighterIJTheme.setup();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		mnNewMenu_7.add(mntmNewMenuItem);
 		
 		mntmNewMenuItem.setPreferredSize(new Dimension(150, 36));
@@ -157,7 +170,9 @@ public class PrincipalVisual extends JFrame {
 		menuBar.add(rigidArea);
 		setContentPane(contentPane);
 		
-
+		
 	}
+	
+	
 
 }
