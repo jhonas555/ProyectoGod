@@ -134,9 +134,26 @@ public class PrincipalVisual extends JFrame {
 		additionalWidth = 20; // You can adjust this value
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_6.setPreferredSize(new Dimension(newWidth, currentSize.height));
-
 		
-		Component rigidArea = Box.createRigidArea(new Dimension(5,80));
+		JMenu mnNewMenu_7 = new JMenu("    Apariencia");
+		menuBar.add(mnNewMenu_7);
+		
+		currentSize = mnNewMenu_7.getPreferredSize();
+		additionalWidth = 20; // You can adjust this value
+		newWidth = currentSize.width + additionalWidth;
+		mnNewMenu_7.setPreferredSize(new Dimension(newWidth, currentSize.height));
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Blanco");
+		mnNewMenu_7.add(mntmNewMenuItem);
+		
+		mntmNewMenuItem.setPreferredSize(new Dimension(150, 36));
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Negro");
+		mnNewMenu_7.add(mntmNewMenuItem_1);
+		
+		mntmNewMenuItem_1.setPreferredSize(new Dimension(150, 36));
+		
+		Component rigidArea = Box.createRigidArea(new Dimension(5,68));
 		menuBar.add(rigidArea);
 		setContentPane(contentPane);
 		
