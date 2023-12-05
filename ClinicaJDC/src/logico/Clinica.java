@@ -32,7 +32,6 @@ public class Clinica implements Serializable{
 		this.lasPersonas = lasPersonas;
 	}
 	
-	
 	public class GestorCitas {
 
 	    private String archivo = "citas.dat";
@@ -62,10 +61,8 @@ public class Clinica implements Serializable{
 	        }
 	        return citas; 
 	    }
-
 	}
-	
-	
+		
 	public class AgendaCitas {
 
 	    private GestorCitas gestorCitas;
@@ -165,9 +162,6 @@ public class Clinica implements Serializable{
 
 	}
 	
-	
-
-	
 	public ArrayList<Vacuna> getLasVacunas() {
 		return lasVacunas;
 	}
@@ -198,4 +192,62 @@ public class Clinica implements Serializable{
 	public void setLasPersonas(ArrayList<Persona> lasPersonas) {
 		this.lasPersonas = lasPersonas;
 	}	
+	
+	public void agregarEnfermedad(Enfermedad enfermedad) {
+	    lasEnfermedades.add(enfermedad);
+
+	    try (FileOutputStream f = new FileOutputStream("lasEnfermedades.dat");
+	         ObjectOutputStream oos = new ObjectOutputStream(f)) {
+
+	        oos.writeInt(lasEnfermedades.size());
+
+	        for (Enfermedad e : lasEnfermedades) {
+	            oos.writeObject(e);
+	        }
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	public void eliminarEnfermedad(Enfermedad enfermedad) {
+		lasEnfermedades.remove(enfermedad);
+	}
+	
+	public Enfermedad buscarEnfermedadPorId(String id) {
+		for (Enfermedad enfermedad : lasEnfermedades) {
+			if(enfermedad.getId().equalsIgnoreCase(id))
+				return enfermedad;
+		}
+		return null;
+	}
+	
+	public void agregarVacuna(Vacuna vacuna) {
+		lasVacunas.add(vacuna);
+		
+		try (FileOutputStream v = new FileOutputStream("lasVacunas.dat");
+		         ObjectOutputStream oos = new ObjectOutputStream(v)) {
+
+		        oos.writeInt(lasVacunas.size());
+
+		        for (Vacuna p : lasVacunas) {
+		            oos.writeObject(p);
+		        }
+
+		    } catch (IOException p) {
+		        p.printStackTrace();
+		    }
+	}
+
+	public void eliminarVacunas(Vacuna vacuna) {
+		lasVacunas.remove(vacuna);
+	}
+	
+	public Vacuna buscarVacunaPorNumeroLote(String numeroLote) {
+		for (Vacuna vacuna : lasVacunas) {
+			if(vacuna.getNumeroLote().equalsIgnoreCase(numeroLote))
+				return vacuna;
+		}
+		return null;
+	}
 }
