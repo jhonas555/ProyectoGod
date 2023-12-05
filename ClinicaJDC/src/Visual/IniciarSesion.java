@@ -63,34 +63,39 @@ public class IniciarSesion extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(289, 38, 139, 41);
+		lblNewLabel.setFont(new Font("Segoe UI Light", Font.BOLD, 30));
+		lblNewLabel.setBounds(224, 39, 198, 58);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(53, 135, 56, 16);
+		lblNewLabel_1.setBounds(53, 151, 56, 16);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblContrasea.setBounds(53, 199, 82, 16);
+		lblContrasea.setBounds(53, 215, 82, 16);
 		panel.add(lblContrasea);
 		
 		textField = new JTextField();
-		textField.setBounds(169, 128, 320, 32);
+		textField.setBounds(169, 144, 320, 32);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(169, 192, 320, 32);
+		textField_1.setBounds(169, 208, 320, 32);
 		panel.add(textField_1);
 		
 		JButton btnNewButton = new JButton("Ingresar");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setBounds(420, 298, 120, 32);
 		panel.add(btnNewButton);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(IniciarSesion.class.getResource("/Fotos/medic_logo75px.png")));
+		lblNewLabel_2.setBounds(120, 30, 75, 75);
+		panel.add(lblNewLabel_2);
 		
 		
 	}
