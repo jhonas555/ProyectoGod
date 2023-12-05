@@ -150,7 +150,7 @@ public class PrincipalVisual extends JFrame {
 		newWidth = currentSize.width + additionalWidth;
 		mnNewMenu_4.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
-		JMenu mnNewMenu_5 = new JMenu("Vacunas  ");
+		JMenu mnNewMenu_5 = new JMenu("Vacunas ");
 		mnNewMenu_5.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/syringe.png")));
 		menuBar.add(mnNewMenu_5);
 		
