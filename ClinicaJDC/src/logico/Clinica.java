@@ -26,9 +26,9 @@ public class Clinica implements Serializable{
 	private static int idCitas = 1;
 	private static int idEnfermedades = 1;
 	private static int idPersonas = 1;
+	private static Clinica clinica = null;
 	
-	public Clinica(ArrayList<Vacuna> lasVacunas, ArrayList<Vivienda> lasViviendas, ArrayList<Cita> lasCitas,
-			ArrayList<Enfermedad> lasEnfermedades, ArrayList<Persona> lasPersonas) {
+	public Clinica() {
 		super();
 		this.lasVacunas = new ArrayList<>();
 		this.lasViviendas = new ArrayList<>();
@@ -37,6 +37,12 @@ public class Clinica implements Serializable{
 		this.lasPersonas = new ArrayList<>();
 	}
 
+	public static Clinica getInstance() {
+		if(clinica == null) {
+			clinica = new Clinica();
+		}
+		return clinica;
+	}
 	
 	public ArrayList<Vacuna> getLasVacunas() {
 		return lasVacunas;
