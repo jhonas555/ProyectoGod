@@ -30,8 +30,10 @@ public class RegPacientes extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param contentPane 
+	 * @param content 
 	 */
-	public RegPacientes() {
+	public RegPacientes(JPanel contentPane, JPanel content) {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Paciente");
@@ -146,14 +148,12 @@ public class RegPacientes extends JPanel {
 		add(lblEspecialidad);
 		
 		JButton btnConsultas = new JButton("Consultas");
-		btnConsultas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				PrincipalVisual.LlamarRegConsultas(/*se le va a pasar el id de paciente*/);
+		btnConsultas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrincipalVisual.LlamarRegConsultas(contentPane, content);
 			}
-
-			
 		});
+		
 		btnConsultas.setBounds(165, 425, 120, 32);
 		add(btnConsultas);
 		

@@ -26,9 +26,9 @@ public class RegConsultas extends JPanel {
 	public RegConsultas() {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Administrador");
+		JLabel lblNewLabel = new JLabel("Consultas del Paciente: NOMBRE DEL PACIENTE");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(28, 26, 208, 23);
+		lblNewLabel.setBounds(28, 26, 494, 23);
 		add(lblNewLabel);
 		Dimension dimension = new Dimension(1904, 900);
 		this.setPreferredSize(new Dimension(1904, 896));

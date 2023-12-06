@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
 
 public class PrincipalVisual extends JFrame {
 
-	private static JPanel contentPane;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -187,7 +187,7 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				RegPacientes regpacientes = new RegPacientes();
+				RegPacientes regpacientes = new RegPacientes(contentPane, content);
 				regpacientes.setSize(1904,908);
 				regpacientes.setLocation(0,0);
 				
@@ -344,8 +344,16 @@ public class PrincipalVisual extends JFrame {
 		
 	}
 	
-	public static void LlamarRegConsultas() {
+	public static void LlamarRegConsultas(JPanel contentPane2, JPanel content /*poner el id del paciente*/) {// primer argumento es la clase del Jpane principal
+		// segundo argumento del Jpanel interior
+		RegConsultas regconsultas = new RegConsultas();
+		regconsultas.setSize(1904,908);
+		regconsultas.setLocation(0,0);
 		
+		content.removeAll();
+		content.add(regconsultas, BorderLayout.CENTER);
+		content.revalidate();
+		content.repaint();
 		
 	}
 	
