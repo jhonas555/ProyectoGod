@@ -21,17 +21,21 @@ public class Clinica implements Serializable{
 	private ArrayList<Cita>lasCitas;
 	private ArrayList<Enfermedad>lasEnfermedades;
 	private ArrayList<Persona>lasPersonas;
+	private static int idVacunas = 1;
+	private static int idViviendas = 1;
+	private static int idCitas = 1;
+	private static int idEnfermedades = 1;
+	private static int idPersonas = 1;
 	
 	public Clinica(ArrayList<Vacuna> lasVacunas, ArrayList<Vivienda> lasViviendas, ArrayList<Cita> lasCitas,
 			ArrayList<Enfermedad> lasEnfermedades, ArrayList<Persona> lasPersonas) {
 		super();
-		this.lasVacunas = lasVacunas;
-		this.lasViviendas = lasViviendas;
-		this.lasCitas = lasCitas;
-		this.lasEnfermedades = lasEnfermedades;
-		this.lasPersonas = lasPersonas;
+		this.lasVacunas = new ArrayList<>();
+		this.lasViviendas = new ArrayList<>();
+		this.lasCitas = new ArrayList<>();
+		this.lasEnfermedades = new ArrayList<>();
+		this.lasPersonas = new ArrayList<>();
 	}
-	
 
 	
 	public ArrayList<Vacuna> getLasVacunas() {
@@ -64,9 +68,26 @@ public class Clinica implements Serializable{
 	public void setLasPersonas(ArrayList<Persona> lasPersonas) {
 		this.lasPersonas = lasPersonas;
 	}	
-	
+	public static int getIdVacunas() {
+		return idVacunas;
+	}
+	public static int getIdViviendas() {
+		return idViviendas;
+	}
+	public static int getIdCitas() {
+		return idCitas;
+	}
+	public static int getIdEnfermedades() {
+		return idEnfermedades;
+	}
+	public static int getIdPersonas() {
+		return idPersonas;
+	}
+
+
 	public void agregarEnfermedad(Enfermedad enfermedad) {
 	    lasEnfermedades.add(enfermedad);
+	    idEnfermedades++;
 
 	    try (FileOutputStream f = new FileOutputStream("lasEnfermedades.dat");
 	         ObjectOutputStream oos = new ObjectOutputStream(f)) {
@@ -96,6 +117,7 @@ public class Clinica implements Serializable{
 	
 	public void agregarVacuna(Vacuna vacuna) {
 		lasVacunas.add(vacuna);
+		idVacunas++;
 		
 		try (FileOutputStream v = new FileOutputStream("lasVacunas.dat");
 		         ObjectOutputStream oos = new ObjectOutputStream(v)) {
@@ -122,7 +144,6 @@ public class Clinica implements Serializable{
 		}
 		return null;
 	}
-	
 	
 	
 	public class SistemaCitasArchivo {
@@ -156,6 +177,7 @@ public class Clinica implements Serializable{
 	            try {
 	                Cita cita = (Cita) ois.readObject(); 
 	                citas.add(cita);
+	    	        idCitas++;
 	            } catch (EOFException e) {
 	                break;
 	            }
@@ -205,8 +227,7 @@ public class Clinica implements Serializable{
 	        ois.close();
 	        
 	        return consultas;
-	    }
-	    
+	    }  
 	}
 	
 	public class SistemaViviendasArchivo {
@@ -239,6 +260,7 @@ public class Clinica implements Serializable{
 	            try {
 	                Vivienda vivienda = (Vivienda) ois.readObject();
 	                viviendas.add(vivienda);
+	    	    	idViviendas++;
 	            } catch(EOFException e) {
 	                break;
 	            }           
