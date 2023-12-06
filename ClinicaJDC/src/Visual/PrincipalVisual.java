@@ -28,6 +28,9 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+
+import logico.Clinica;
+
 public class PrincipalVisual extends JFrame {
 
 	private JPanel contentPane;
