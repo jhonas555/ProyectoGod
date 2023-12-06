@@ -40,4 +40,8 @@ public class Consulta {
 	public void setLasEnfermedades(ArrayList<Enfermedad> lasEnfermedades) {
 		this.lasEnfermedades = lasEnfermedades;
 	}
+    public Paciente getPaciente() {
+        return getPaciente();
+    }
+
 }

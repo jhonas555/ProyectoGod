@@ -1,5 +1,6 @@
 package logico;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,135 +33,7 @@ public class Clinica implements Serializable{
 		this.lasPersonas = lasPersonas;
 	}
 	
-	public class GestorCitas {
 
-	    private String archivo = "citas.dat";
-
-	    public void guardarCitas(List<Cita> citas) {
-	        try {
-	            FileOutputStream fos = new FileOutputStream(archivo);
-	            ObjectOutputStream oos = new ObjectOutputStream(fos);
-	            oos.writeObject(citas);
-	            oos.close();
-	            fos.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    public List<Cita> cargarCitas() {
-	        List<Cita> citas = new ArrayList<>();
-	        try {
-	            FileInputStream fis = new FileInputStream(archivo);
-	            ObjectInputStream ois = new ObjectInputStream(fis);
-	            citas = (List<Cita>) ois.readObject();
-	            ois.close();
-	            fis.close();
-	        } catch (IOException | ClassNotFoundException e) {
-	            e.printStackTrace();
-	        }
-	        return citas; 
-	    }
-	}
-		
-	public class AgendaCitas {
-
-	    private GestorCitas gestorCitas;
-
-	    public AgendaCitas() {
-	        this.gestorCitas = new GestorCitas();
-	    }
-
-	    public void agendaCita(String id, Paciente paciente, Doctor doctor, Date fecha) {
-	        
-	        // crea una cita
-	        Cita cita = new Cita(id, fecha, paciente, doctor); 
-	        
-	        // lista las citas
-	        List<Cita> citas = gestorCitas.cargarCitas();
-	        
-	        // agrega citas
-	        citas.add(cita);
-
-	        // guarda las citas 
-	        gestorCitas.guardarCitas(citas);
-	        
-	    }
-	    
-	    
-	    public void cancelarCita(Cita cita) {
-	        
-	        List<Cita> citas = gestorCitas.cargarCitas();
-	        
-	        // Buscar la cita y cambiar el estado a cancelada
-	        for(Cita c : citas) {
-	            if(c.getId().equals(cita.getId())) {
-	                c.setEstado(false);
-	                break;
-	            }
-	        }
-	        
-	        gestorCitas.guardarCitas(citas);
-	        
-	    }
-	    
-	    public void actualizarCita(Cita citaNueva) {
-	    
-	        List<Cita> citas = gestorCitas.cargarCitas();
-	        
-	        // Buscar la cita vieja y actualizarla 
-	        for(int i = 0; i < citas.size(); i++) {
-	            Cita c = citas.get(i); 
-	            if(c.getId().equals(citaNueva.getId())) {
-	                citas.set(i, citaNueva); 
-	                break;
-	            }
-	        }
-
-	        gestorCitas.guardarCitas(citas);
-	        
-	    }
-
-	    
-	    private void generaId() {
-	        //pendiente generar id unico
-	    }
-
-	}
-	
-	public class ConsultaCitas {
-
-	    private GestorCitas gestorCitas;
-
-	    public ConsultaCitas() {
-	        this.gestorCitas = new GestorCitas();
-	    }
-
-	    public List<Cita> consultaCitas() {
-	        return gestorCitas.cargarCitas(); 
-	    }
-
-	    public List<Cita> consultaCitasPaciente(Paciente paciente) {
-	        List<Cita> citas = gestorCitas.cargarCitas();
-	        
-	        // Filtrar sólo citas del paciente
-	        return citas.stream()
-	                    .filter(c -> c.getPaciente().equals(paciente))
-	                    .collect(Collectors.toList());
-	    }
-	    
-	    public List<Cita> consultaCitasDoctor(Doctor doctor, Date desde, Date hasta) {
-	        List<Cita> citas = gestorCitas.cargarCitas();
-	        
-	        // Filtrar por doctor y rango de fechas
-	        return citas.stream()
-	                    .filter(c -> c.getDoctor().equals(doctor)) 
-	                    .filter(c -> c.getFecha().after(desde) && 
-	                               c.getFecha().before(hasta))
-	                    .collect(Collectors.toList()); 
-	    }
-
-	}
 	
 	public ArrayList<Vacuna> getLasVacunas() {
 		return lasVacunas;
@@ -249,5 +122,91 @@ public class Clinica implements Serializable{
 				return vacuna;
 		}
 		return null;
+	}
+	
+	
+	
+	public class SistemaCitasArchivo {
+
+	    private String archivoCitas = "citas.dat";
+
+	    public void agregarCita(Paciente paciente, Doctor doctor, Date fecha) throws Exception {
+	        Cita cita = new Cita(paciente, doctor, fecha);
+	        
+	        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivoCitas, true));
+	        oos.writeObject(cita);
+	        oos.close();
+	    }
+
+	    public void cancelarCita(Cita cita) throws Exception {
+	        ArrayList<Cita> citas = leerCitas();
+	        citas.remove(cita);
+	        
+	        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivoCitas)); 
+	        for(Cita c: citas) {
+	            oos.writeObject(c);
+	        }
+	        oos.close();
+	    }   
+
+	    private ArrayList<Cita> leerCitas() throws Exception {
+	        ArrayList<Cita> citas = new ArrayList<>();
+	        
+	        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivoCitas));
+	        while(true) {
+	            try {
+	                Cita cita = (Cita) ois.readObject(); 
+	                citas.add(cita);
+	            } catch (EOFException e) {
+	                break;
+	            }
+	        }
+	        ois.close();
+	        
+	        return citas;
+	    }
+
+	}
+	
+	public class SistemaConsultasArchivo {
+
+	    
+	    private String archivoConsultas = "consultas.dat";
+	    
+	    public void agregarConsulta(Consulta consulta) throws Exception {
+	        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivoConsultas, true)); 
+	        oos.writeObject(consulta);
+	        oos.close();
+	    }
+	    
+	    public ArrayList<Consulta> obtenerConsultasPaciente(Paciente paciente) throws Exception {
+	        ArrayList<Consulta> consultas = leerConsultas();
+	        
+	        ArrayList<Consulta> consultasPaciente = new ArrayList<>();
+	        for(Consulta c: consultas) {
+	            if(c.getPaciente().equals(paciente)) {
+	                consultasPaciente.add(c);
+	            }
+	        }   
+	        return consultasPaciente;
+	    }
+	    
+	    private ArrayList<Consulta> leerConsultas() throws Exception {
+	        ArrayList<Consulta> consultas = new ArrayList<>();
+	        
+	        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivoConsultas)); 
+	        while(true) {
+	            try {
+	                Consulta consulta = (Consulta) ois.readObject();
+	                consultas.add(consulta); 
+	            } catch(EOFException e) {
+	                break;
+	            }
+	        }
+	        ois.close();
+	        
+	        return consultas;
+	    }
+	    
 	}
 }

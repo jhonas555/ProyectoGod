@@ -17,21 +17,15 @@ public class Cita implements Serializable{
 	private Paciente paciente;
 	private Doctor doctor;
 	
-	public Cita(Object object, Date fecha, Paciente paciente, Doctor doctor) {
+	public Cita(Paciente paciente, Doctor doctor, Date fecha) {
 		super();
-		this.id = (String) object;
+		this.id = (String) id;
 		this.fecha = fecha;
 		this.paciente = paciente;
 		this.doctor = doctor;
 	}	
 	
 	
-
-	
-
-	public Cita() {
-	}
-
 	public String getId() {
 		return id;
 	}
