@@ -60,6 +60,7 @@ public class PrincipalVisual extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalVisual() {
+		setTitle("ClinicaJDC");
 		setResizable(false);
 		Dimension dim = getToolkit().getScreenSize();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +71,9 @@ public class PrincipalVisual extends JFrame {
 		setSize(dim.width, dim.height-50);
 		setLocationRelativeTo(null);
 		
-		
+		JPanel content = new JPanel();
+		contentPane.add(content, BorderLayout.CENTER);
+		content.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -87,10 +90,23 @@ public class PrincipalVisual extends JFrame {
 		menuBar.add(rigidArea2);
 		
 		JMenu mnNewMenu_1 = new JMenu("P\u00E1gina Principal");
+		mnNewMenu_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				PagPrincipal pagprincipal = new PagPrincipal();
+				pagprincipal.setSize(1904,908);
+				pagprincipal.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(pagprincipal, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_1.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/menu-burger.png")));
 		
 		menuBar.add(mnNewMenu_1);
-		mnNewMenu_1.setSelected(true);
+		//mnNewMenu_1.setSelected(true);
 		
 		Dimension currentSize = mnNewMenu_1.getPreferredSize();
 		int additionalWidth = 20; // You can adjust this value
@@ -98,13 +114,20 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_1.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu = new JMenu("Citas");
-		mnNewMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		mnNewMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegCitas regcitas = new RegCitas();
+				regcitas.setSize(1904,908);
+				regcitas.setLocation(0,0);
 				
-				
-
+				content.removeAll();
+				content.add(regcitas, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
 			}
 		});
+		
 		mnNewMenu.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/bookmark.png")));
 		
 		menuBar.add(mnNewMenu);
@@ -115,6 +138,19 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnViviendas = new JMenu("Viviendas");
+		mnViviendas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegViviendas regviviendas = new RegViviendas();
+				regviviendas.setSize(1904,908);
+				regviviendas.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regviviendas, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnViviendas.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/home.png")));
 		menuBar.add(mnViviendas);
 		
@@ -124,6 +160,19 @@ public class PrincipalVisual extends JFrame {
 		mnViviendas.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu_2 = new JMenu("Doctores");
+		mnNewMenu_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegDoctores regdoctores = new RegDoctores();
+				regdoctores.setSize(1904,908);
+				regdoctores.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regdoctores, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_2.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/user-md.png")));
 		menuBar.add(mnNewMenu_2);
 		
@@ -133,6 +182,19 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_2.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu_3 = new JMenu("Pacientes");
+		mnNewMenu_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegPacientes regpacientes = new RegPacientes();
+				regpacientes.setSize(1904,908);
+				regpacientes.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regpacientes, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_3.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/user.png")));
 		menuBar.add(mnNewMenu_3);
 		
@@ -142,6 +204,19 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_3.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu_4 = new JMenu("Enfermedades");
+		mnNewMenu_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegEnfermedades regenfermedades = new RegEnfermedades();
+				regenfermedades.setSize(1904,908);
+				regenfermedades.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regenfermedades, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_4.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/bacterium.png")));
 		menuBar.add(mnNewMenu_4);
 		
@@ -151,6 +226,19 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_4.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu_5 = new JMenu("Vacunas ");
+		mnNewMenu_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegVacunas regvacunas = new RegVacunas();
+				regvacunas.setSize(1904,908);
+				regvacunas.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regvacunas, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_5.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/syringe.png")));
 		menuBar.add(mnNewMenu_5);
 		
@@ -160,6 +248,19 @@ public class PrincipalVisual extends JFrame {
 		mnNewMenu_5.setPreferredSize(new Dimension(newWidth, currentSize.height));
 		
 		JMenu mnNewMenu_6 = new JMenu("Administradores");
+		mnNewMenu_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				RegAdministradores regadministradores = new RegAdministradores();
+				regadministradores.setSize(1904,908);
+				regadministradores.setLocation(0,0);
+				
+				content.removeAll();
+				content.add(regadministradores, BorderLayout.CENTER);
+				content.revalidate();
+				content.repaint();
+			}
+		});
 		mnNewMenu_6.setIcon(new ImageIcon(PrincipalVisual.class.getResource("/Fotos/admin-alt.png")));
 		menuBar.add(mnNewMenu_6);
 		
@@ -225,6 +326,16 @@ public class PrincipalVisual extends JFrame {
 		menuBar.add(rigidArea);
 		setContentPane(contentPane);
 		
+		
+		
+		PagPrincipal pagprincipal = new PagPrincipal();
+		pagprincipal.setSize(1904,908);
+		pagprincipal.setLocation(0,0);
+		
+		content.removeAll();
+		content.add(pagprincipal, BorderLayout.CENTER);
+		content.revalidate();
+		content.repaint();
 		
 	}
 	
