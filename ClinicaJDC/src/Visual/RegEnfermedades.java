@@ -111,15 +111,15 @@ public class RegEnfermedades extends JPanel {
 		lblId.setBounds(28, 103, 135, 16);
 		add(lblId);
 		
-		JButton button_1 = new JButton("Cita Nueva");
-		button_1.addActionListener(new ActionListener() {
+		JButton btnEnfermedadNueva = new JButton("Enfermedad Nueva");
+		btnEnfermedadNueva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modo = 0;
 				clean();
 			}
 		});
-		button_1.setBounds(504, 851, 120, 32);
-		add(button_1);
+		btnEnfermedadNueva.setBounds(464, 851, 160, 32);
+		add(btnEnfermedadNueva);
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
