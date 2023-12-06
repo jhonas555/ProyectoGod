@@ -148,6 +148,8 @@ public class RegEnfermedades extends JPanel {
 		
 	}
 	
+	
+	
 	private void clean() {
 		txtId.setText(""+Clinica.getIdEnfermedades());
 		txtNombre.setText("");
