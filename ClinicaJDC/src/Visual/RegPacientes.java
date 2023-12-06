@@ -142,7 +142,7 @@ public class RegPacientes extends JPanel {
 		textField_5.setBounds(165, 370, 330, 32);
 		add(textField_5);
 		
-		JLabel lblEspecialidad = new JLabel("Historial Clinico");
+		JLabel lblEspecialidad = new JLabel("Historial Cl\u00EDnico");
 		lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEspecialidad.setBounds(28, 432, 147, 16);
 		add(lblEspecialidad);

@@ -86,9 +86,9 @@ public class RegViviendas extends JPanel {
 		button.setBounds(504, 851, 120, 32);
 		add(button);
 		
-		JLabel lblPeronas = new JLabel("Peronas");
+		JLabel lblPeronas = new JLabel("Personas");
 		lblPeronas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPeronas.setBounds(28, 212, 56, 16);
+		lblPeronas.setBounds(28, 212, 79, 16);
 		add(lblPeronas);
 		
 		JButton btnAdministrar = new JButton("Administrar");
