@@ -197,7 +197,6 @@ public class Clinica implements Serializable{
 	
 	public class SistemaConsultasArchivo {
 
-	    
 	    private String archivoConsultas = "consultas.dat";
 	    
 	    public void agregarConsulta(Consulta consulta) throws Exception {
