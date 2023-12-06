@@ -1,6 +1,7 @@
 package logico;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
 public class Vivienda implements Serializable {

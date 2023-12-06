@@ -1,6 +1,7 @@
 package logico;
 
 import java.io.EOFException;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,8 +10,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class Clinica implements Serializable{
@@ -209,4 +208,46 @@ public class Clinica implements Serializable{
 	    }
 	    
 	}
+	
+	public class SistemaViviendasArchivo {
+
+	    private String archivoViviendas = "viviendas.dat";
+	    
+	    public void agregarVivienda(Vivienda vivienda) throws Exception {
+	        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivoViviendas, true));
+	        oos.writeObject(vivienda);
+	        oos.close();
+	    }
+	    
+	    public Vivienda buscarViviendaPorId(String id) throws Exception {
+	        ArrayList<Vivienda> viviendas = leerViviendas();
+	        
+	        for(Vivienda v : viviendas) {
+	            if(v.getId().equals(id)) {
+	                return v;
+	            }
+	        }
+	        
+	        return null;
+	    }
+	    
+	    private ArrayList<Vivienda> leerViviendas() throws Exception {
+	        ArrayList<Vivienda> viviendas = new ArrayList<>();
+	        
+	        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivoViviendas));
+	        while(true) {
+	            try {
+	                Vivienda vivienda = (Vivienda) ois.readObject();
+	                viviendas.add(vivienda);
+	            } catch(EOFException e) {
+	                break;
+	            }           
+	        }
+	        ois.close();
+	        
+	        return viviendas;
+	    }   
+	} 
+	
+	
 }
