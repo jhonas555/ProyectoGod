@@ -1,8 +1,11 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Historial_Clinica {
+public class Historial_Clinica implements Serializable{
+	
+	private static final long serialVersionUID = -1735516965450146267L;
 	
 	private String id;
 	private ArrayList<Consulta> lasConsultas;
@@ -10,7 +13,7 @@ public class Historial_Clinica {
 	public Historial_Clinica(String id, ArrayList<Consulta> lasConsultas) {
 		super();
 		this.id = id;
-		this.lasConsultas = lasConsultas;
+		this.lasConsultas = new ArrayList<>();
 	}
 	
 	public String getId() {
