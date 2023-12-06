@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
 
 public class PrincipalVisual extends JFrame {
 
-	private JPanel contentPane;
+	private static JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -345,7 +345,6 @@ public class PrincipalVisual extends JFrame {
 	}
 	
 	public static void LlamarRegConsultas() {
-		
 		
 		
 	}
