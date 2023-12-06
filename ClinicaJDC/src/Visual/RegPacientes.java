@@ -2,6 +2,7 @@ package Visual;
 
 import javax.swing.JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -12,6 +13,11 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+
+
 
 public class RegPacientes extends JPanel {
 	private JTextField idCita;
@@ -151,7 +157,28 @@ public class RegPacientes extends JPanel {
 		add(lblEspecialidad);
 		
 		JButton btnConsultas = new JButton("Consultas");
+		btnConsultas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				PrincipalVisual.LlamarRegConsultas(/*se le va a pasar el id de paciente*/);
+			}
+
+			
+		});
 		btnConsultas.setBounds(165, 480, 120, 32);
 		add(btnConsultas);
+		
+		JLabel lblVacunas = new JLabel("Vacunas");
+		lblVacunas.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblVacunas.setBounds(28, 542, 147, 16);
+		add(lblVacunas);
+		
+		JButton btnAdministrar = new JButton("Administrar");
+		btnAdministrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAdministrar.setBounds(165, 535, 120, 32);
+		add(btnAdministrar);
 	}
 }

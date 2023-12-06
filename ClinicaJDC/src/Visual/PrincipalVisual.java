@@ -60,6 +60,8 @@ public class PrincipalVisual extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalVisual() {
+		
+		
 		setTitle("ClinicaJDC");
 		setResizable(false);
 		Dimension dim = getToolkit().getScreenSize();
@@ -337,7 +339,17 @@ public class PrincipalVisual extends JFrame {
 		content.revalidate();
 		content.repaint();
 		
+		
+		
+		
 	}
+	
+	public static void LlamarRegConsultas() {
+		
+		
+		
+	}
+	
 	
 	
 

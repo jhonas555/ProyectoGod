@@ -12,11 +12,11 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class RegEnfermedades extends JPanel {
 	private JTextField idCita;
 	private JTable table;
-	private JTextField textField;
 	private JTextField textField_1;
 
 	/**
@@ -78,11 +78,6 @@ public class RegEnfermedades extends JPanel {
 		lblFecha.setBounds(28, 157, 56, 16);
 		add(lblFecha);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(165, 205, 330, 144);
-		add(textField);
-		
 		JLabel lblId = new JLabel("ID");
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblId.setBounds(28, 103, 135, 16);
@@ -100,5 +95,9 @@ public class RegEnfermedades extends JPanel {
 		textField_1.setColumns(10);
 		textField_1.setBounds(165, 150, 330, 32);
 		add(textField_1);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(165, 205, 330, 157);
+		add(textPane);
 	}
 }
