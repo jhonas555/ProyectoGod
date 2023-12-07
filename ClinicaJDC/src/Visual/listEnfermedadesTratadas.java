@@ -80,7 +80,7 @@ public class listEnfermedadesTratadas extends JDialog {
 					scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 					panelEnfermedades.add(scrollPane, BorderLayout.CENTER);
 					
-					String[] headerEnfermedades = {"Nombre"};
+					String[] headerEnfermedades = {"Enfermedades"};
 					modelEnfermedad = new DefaultTableModel();
 					modelEnfermedad.setColumnIdentifiers(headerEnfermedades);
 					tblEnfermedades = new JTable();
@@ -113,7 +113,7 @@ public class listEnfermedadesTratadas extends JDialog {
 				panelEnfTratadas.add(scrollPane, BorderLayout.CENTER);
 				
 				tblenfTratada = new JTable();
-				String[] headerenfTratada = {"Nombre"};
+				String[] headerenfTratada = {"Enfermedades"};
 				modelenfTratada = new DefaultTableModel();
 				modelenfTratada.setColumnIdentifiers(headerenfTratada);
 				tblenfTratada.addMouseListener(new MouseAdapter() {
