@@ -161,6 +161,18 @@ public class Clinica implements Serializable{
 	    }
 
 	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    guardarEnfermedadesEnArchivo();
 	}
 
