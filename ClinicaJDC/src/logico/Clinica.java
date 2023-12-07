@@ -113,6 +113,32 @@ public class Clinica implements Serializable{
 		lasEnfermedades.remove(enfermedad);
 	}
 	
+    public void actualizarEnfermedad(String id, Enfermedad nuevaEnfermedad) {
+        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enfermedades.dat"))) {
+            Enfermedad enfermedad;
+            while ((enfermedad = (Enfermedad) ois.readObject()) != null) {
+                if (enfermedad.getId().equals(id)) {
+                    enfermedades.add(nuevaEnfermedad);
+                } else {
+                    enfermedades.add(enfermedad);
+                }
+            }
+        } catch (EOFException e) {
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enfermedades.dat"))) {
+            for (Enfermedad enfermedad : enfermedades) {
+                oos.writeObject(enfermedad);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+	
 	public Enfermedad buscarEnfermedadPorId(String id) {
 		for (Enfermedad enfermedad : lasEnfermedades) {
 			if(enfermedad.getId().equalsIgnoreCase(id))

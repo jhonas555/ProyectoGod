@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Paciente extends Persona {
 
@@ -71,12 +72,58 @@ public class Paciente extends Persona {
                 }
             }
         } catch (EOFException e) {
-            // Se alcanzó el final del archivo, no es un error.
+
         } finally {
             ois.close();
         }
 
         return pacientes.toArray(new Paciente[0]);
+    }
+    
+    public static Paciente buscarPorId(String id) throws IOException, ClassNotFoundException {
+        Paciente[] pacientes = leerDatos();
+        for (Paciente paciente : pacientes) {
+            if (paciente.getId().equals(id)) {
+                return paciente;
+            }
+        }
+        return null;
+    }
+    
+    public static void eliminarPorId(String id) throws IOException, ClassNotFoundException {
+        Paciente[] pacientes = leerDatos();
+        List<Paciente> listaPacientes = new ArrayList<>();
+
+        for (Paciente paciente : pacientes) {
+            if (!paciente.getId().equals(id)) {
+                listaPacientes.add(paciente);
+            }
+        }
+
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("pacientes.dat"));
+        for (Paciente paciente : listaPacientes) {
+            oos.writeObject(paciente);
+        }
+        oos.close();
+    }
+
+    public static void actualizarPaciente(String id, Paciente nuevoPaciente) throws IOException, ClassNotFoundException {
+        Paciente[] pacientes = leerDatos();
+        List<Paciente> listaPacientes = new ArrayList<>();
+
+        for (Paciente paciente : pacientes) {
+            if (paciente.getId().equals(id)) {
+                listaPacientes.add(nuevoPaciente);
+            } else {
+                listaPacientes.add(paciente);
+            }
+        }
+
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("pacientes.dat"));
+        for (Paciente paciente : listaPacientes) {
+            oos.writeObject(paciente);
+        }
+        oos.close();
     }
 
 }

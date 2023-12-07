@@ -1,11 +1,13 @@
 package logico;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Doctor extends Persona {
@@ -50,5 +52,57 @@ public class Doctor extends Persona {
         Doctor doctor = (Doctor) ois.readObject(); 
         ois.close();
         return doctor;
+    }
+    
+    public void actualizarDoctor(String id, Doctor nuevoDoctor) {
+        ArrayList<Doctor> doctores = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("doctores.dat"))) {
+            Doctor doctor;
+            while ((doctor = (Doctor) ois.readObject()) != null) {
+                if (doctor.getId().equals(id)) {
+                    doctores.add(nuevoDoctor);
+                } else {
+                    doctores.add(doctor);
+                }
+            }
+        } catch (EOFException e) {
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("doctores.dat"))) {
+            for (Doctor doctor : doctores) {
+                oos.writeObject(doctor);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarDoctor(String id) {
+        ArrayList<Doctor> doctores = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("doctores.dat"))) {
+            Doctor doctor;
+            while ((doctor = (Doctor) ois.readObject()) != null) {
+                if (!doctor.getId().equals(id)) {
+                    doctores.add(doctor);
+                }
+            }
+        } catch (EOFException e) {
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("doctores.dat"))) {
+            for (Doctor doctor : doctores) {
+                oos.writeObject(doctor);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
