@@ -168,9 +168,9 @@ public class Clinica implements Serializable{
 	}
 	
 	
-	public void agregarDoctor(Doctor doctor) {
-		losDoctores.add(doctor);
-		idDoctores++;
+	public void agregarPersona(Persona persona) {
+		lasPersonas.add(persona);
+		idPersonas++;
 		
 		try (FileOutputStream v = new FileOutputStream("losDoctores.dat");
 		         ObjectOutputStream oos = new ObjectOutputStream(v)) {
