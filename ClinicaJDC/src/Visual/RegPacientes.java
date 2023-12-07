@@ -47,6 +47,7 @@ public class RegPacientes extends JPanel {
         idCita.setBounds(165, 96, 330, 32);
         add(idCita);
         idCita.setColumns(10);
+        idCita.setEditable(false);
 
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(1032, 13, 860, 870);

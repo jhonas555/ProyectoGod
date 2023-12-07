@@ -60,6 +60,7 @@ public class RegDoctores extends JPanel {
         txtId.setBounds(165, 96, 330, 32);
         add(txtId);
         txtId.setColumns(10);
+        txtId.setEditable(false);
 
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(1032, 13, 860, 870);
