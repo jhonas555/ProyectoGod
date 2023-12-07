@@ -52,7 +52,7 @@ public class RegViviendas extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(900, 851, 120, 32);
+		btnNewButton.setBounds(900, 512, 120, 32);
 		add(btnNewButton);
 		
 		JButton btnModificar = new JButton("Guardar");
@@ -60,11 +60,11 @@ public class RegViviendas extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnModificar.setBounds(768, 851, 120, 32);
+		btnModificar.setBounds(768, 512, 120, 32);
 		add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(636, 851, 120, 32);
+		btnEliminar.setBounds(636, 512, 120, 32);
 		add(btnEliminar);
 		
 		JLabel lblFecha = new JLabel("Nombre");
@@ -83,7 +83,7 @@ public class RegViviendas extends JPanel {
 		add(lblId);
 		
 		JButton button = new JButton("Cita Nueva");
-		button.setBounds(504, 851, 120, 32);
+		button.setBounds(504, 512, 120, 32);
 		add(button);
 		
 		JLabel lblPeronas = new JLabel("Personas");

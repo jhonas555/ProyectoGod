@@ -63,7 +63,7 @@ public class RegAdministradores extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(900, 851, 120, 32);
+		btnNewButton.setBounds(900, 685, 120, 32);
 		add(btnNewButton);
 		
 		JButton btnModificar = new JButton("Guardar");
@@ -71,11 +71,11 @@ public class RegAdministradores extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnModificar.setBounds(768, 851, 120, 32);
+		btnModificar.setBounds(768, 685, 120, 32);
 		add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(636, 851, 120, 32);
+		btnEliminar.setBounds(636, 685, 120, 32);
 		add(btnEliminar);
 		
 		JLabel lblFecha = new JLabel("Nombre");
@@ -98,7 +98,7 @@ public class RegAdministradores extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		button_1.setBounds(504, 851, 120, 32);
+		button_1.setBounds(504, 685, 120, 32);
 		add(button_1);
 		
 		textField_1 = new JTextField();

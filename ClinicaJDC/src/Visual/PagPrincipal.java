@@ -14,10 +14,6 @@ public class PagPrincipal extends JPanel {
 	public PagPrincipal() {
 		
 		setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Pag Principal");
-		lblNewLabel.setBounds(257, 286, 164, 54);
-		add(lblNewLabel);
 		Dimension dimension = new Dimension(1904, 896);
 		this.setPreferredSize(dimension);
 

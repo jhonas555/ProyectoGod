@@ -81,21 +81,21 @@ public class RegEnfermedades extends JPanel {
 		
 		JButton btnNewButton = new JButton("Agregar");
 		
-		btnNewButton.setBounds(900, 851, 120, 32);
+		btnNewButton.setBounds(900, 651, 120, 32);
 		add(btnNewButton);
 		btnNewButton.setEnabled(true);
 
 		
 		JButton btnModificar = new JButton("Guardar");
 		
-		btnModificar.setBounds(768, 851, 120, 32);
+		btnModificar.setBounds(768, 651, 120, 32);
 		add(btnModificar);
 		btnModificar.setEnabled(false);
 		
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		
-		btnEliminar.setBounds(636, 851, 120, 32);
+		btnEliminar.setBounds(636, 651, 120, 32);
 		add(btnEliminar);
 		btnEliminar.setEnabled(false);
 
@@ -120,7 +120,7 @@ public class RegEnfermedades extends JPanel {
 				clean();				
 			}
 		});
-		btnEnfermedadNueva.setBounds(454, 851, 170, 32);
+		btnEnfermedadNueva.setBounds(454, 651, 170, 32);
 		add(btnEnfermedadNueva);
 		
 		txtNombre = new JTextField();

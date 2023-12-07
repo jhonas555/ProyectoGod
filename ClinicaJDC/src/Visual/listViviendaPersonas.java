@@ -15,9 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
+import com.formdev.flatlaf.FlatDarkLaf;
 
 import logico.Clinica;
 import logico.Persona;
@@ -43,6 +46,14 @@ public class listViviendaPersonas extends JDialog {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			//FlatMaterialLighterIJTheme.setup();
+			UIManager.setLookAndFeel(new FlatDarkLaf());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		try {
 			listViviendaPersonas dialog = new listViviendaPersonas();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
