@@ -37,8 +37,7 @@ public class RegEnfermedades extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RegEnfermedades() {
-		
+	public RegEnfermedades() {		
 		
 		setLayout(null);
 		
@@ -91,8 +90,7 @@ public class RegEnfermedades extends JPanel {
 		btnModificar.setBounds(768, 651, 120, 32);
 		add(btnModificar);
 		btnModificar.setEnabled(false);
-		
-		
+			
 		JButton btnEliminar = new JButton("Eliminar");
 		
 		btnEliminar.setBounds(636, 651, 120, 32);
@@ -143,11 +141,7 @@ public class RegEnfermedades extends JPanel {
 				clean();
 				loadEnfermedades();
 				
-			}
-
-			
-
-			
+			}	
 		});
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -173,8 +167,7 @@ public class RegEnfermedades extends JPanel {
 							
 				} else {
 					//System.out.println("RegEnfermedad, no se encontro el indice");
-				}
-				
+				}			
 			}
 		});
 		
@@ -209,8 +202,6 @@ public class RegEnfermedades extends JPanel {
 		
 	}
 	
-	
-	
 	private void clean() {
 		txtId.setText(""+Clinica.getIdEnfermedades());
 		txtNombre.setText("");
@@ -229,7 +220,5 @@ public class RegEnfermedades extends JPanel {
 			model.addRow(row);
 		}
 		
-	}
-	
-	
+	}	
 }

@@ -77,6 +77,4 @@ public class Persona implements Serializable{
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
-	
-	
 }

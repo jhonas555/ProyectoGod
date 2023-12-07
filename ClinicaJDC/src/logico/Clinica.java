@@ -21,8 +21,6 @@ public class Clinica implements Serializable{
 	private ArrayList<Cita>lasCitas;
 	private ArrayList<Enfermedad>lasEnfermedades;
 	private ArrayList<Persona>lasPersonas;
-	private ArrayList<Doctor>losDoctores;
-	private static int idDoctores = 1;
 	private static int idVacunas = 1;
 	private static int idViviendas = 1;
 	private static int idCitas = 1;
@@ -166,26 +164,6 @@ public class Clinica implements Serializable{
 		        p.printStackTrace();
 		    }
 	}
-	
-	
-	public void agregarPersona(Persona persona) {
-		lasPersonas.add(persona);
-		idPersonas++;
-		
-		try (FileOutputStream v = new FileOutputStream("losDoctores.dat");
-		         ObjectOutputStream oos = new ObjectOutputStream(v)) {
-
-		        oos.writeInt(losDoctores.size());
-
-		        for (Doctor p : losDoctores) {
-		            oos.writeObject(p);
-		        }
-
-		    } catch (IOException p) {
-		        p.printStackTrace();
-		    }
-	}
-	
 	
 
 	public void eliminarVacunas(Vacuna vacuna) {
