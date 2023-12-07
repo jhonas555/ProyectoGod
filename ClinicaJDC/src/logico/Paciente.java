@@ -1,5 +1,6 @@
 package logico;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -47,19 +48,35 @@ public class Paciente extends Persona {
 		this.lasVacunas = lasVacunas;
 	}
 	
-	  public void guardarDatos() throws Exception {
-		    File archivo= new File("pacientes.data");
-		    FileOutputStream fos = new FileOutputStream(archivo);  
-		    ObjectOutputStream oos = new ObjectOutputStream(fos);
-		    oos.writeObject(this); 
-		    oos.close();
-		  }
-		  
-		  public static Paciente leerDatos() throws Exception {
-		    File archivo = new File("pacientes.data");
-		    FileInputStream fis = new FileInputStream(archivo);
-		    ObjectInputStream ois = new ObjectInputStream(fis);
-		    return (Paciente) ois.readObject();
-		  }
+    public void guardarDatos() throws IOException {
+        File archivo = new File("pacientes.dat");
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo, true));
+        oos.writeObject(this);
+        oos.close();
+    }
+
+    public static Paciente[] leerDatos() throws IOException, ClassNotFoundException {
+        File archivo = new File("pacientes.dat");
+        if (!archivo.exists()) {
+            return new Paciente[0];
+        }
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo));
+        Object obj;
+        java.util.List<Paciente> pacientes = new java.util.ArrayList<>();
+        try {
+            while ((obj = ois.readObject()) != null) {
+                if (obj instanceof Paciente) {
+                    pacientes.add((Paciente) obj);
+                }
+            }
+        } catch (EOFException e) {
+            // Se alcanzó el final del archivo, no es un error.
+        } finally {
+            ois.close();
+        }
+
+        return pacientes.toArray(new Paciente[0]);
+    }
 
 }
