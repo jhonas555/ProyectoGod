@@ -20,6 +20,8 @@ public class Doctor extends Persona {
 		super(id, password, cedula, nombre, apellido, fechaNacimiento, telefono, correoElectronico);
 	}	
 	
+
+
 	public String getNumeroLicenciaMedica() {
 		return numeroLicenciaMedica;
 	}

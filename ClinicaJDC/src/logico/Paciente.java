@@ -47,28 +47,19 @@ public class Paciente extends Persona {
 		this.lasVacunas = lasVacunas;
 	}
 	
-    public void guardarDatos() throws IOException {
-
-        File archivo = new File("pacientes.dat");
-        FileOutputStream fos = new FileOutputStream(archivo);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        oos.writeObject(this);
-        oos.close();
-
-    }
-
-    public static Paciente leerDatos() throws IOException, ClassNotFoundException {
-
-       File archivo = new File("pacientes.dat");
-       FileInputStream fis = new FileInputStream(archivo);
-       ObjectInputStream ois = new ObjectInputStream(fis);
-       
-       Paciente paciente = (Paciente) ois.readObject();
-       ois.close();
-       
-       return paciente;
-
-    }
+	  public void guardarDatos() throws Exception {
+		    File archivo= new File("pacientes.data");
+		    FileOutputStream fos = new FileOutputStream(archivo);  
+		    ObjectOutputStream oos = new ObjectOutputStream(fos);
+		    oos.writeObject(this); 
+		    oos.close();
+		  }
+		  
+		  public static Paciente leerDatos() throws Exception {
+		    File archivo = new File("pacientes.data");
+		    FileInputStream fis = new FileInputStream(archivo);
+		    ObjectInputStream ois = new ObjectInputStream(fis);
+		    return (Paciente) ois.readObject();
+		  }
 
 }
