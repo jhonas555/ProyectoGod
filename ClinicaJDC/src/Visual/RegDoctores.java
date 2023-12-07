@@ -223,19 +223,4 @@ public class RegDoctores extends JPanel {
         txtPassword.setText("");
     }
     
-    public static Date obtenerFechaDesdeTextField(String string) {
-        String formatoFecha = "dd/MM/yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(formatoFecha);
-        sdf.setLenient(false);
-
-        try {
-            String textoFecha = string;
-            Date fecha = sdf.parse(textoFecha);
-            return fecha;
-        } catch (ParseException e) {
-            // La excepción ocurre si la fecha no es válida
-        	
-            return null;
-        }
-    }
 }

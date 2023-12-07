@@ -17,7 +17,6 @@ public class RegPacientes extends JPanel {
     private JTable table;
     private JTextField textField;
     private JTextField textField_1;
-    private JTextField textField_3;
     private JTextField textField_5;
 
     /**
@@ -106,29 +105,19 @@ public class RegPacientes extends JPanel {
         textField_1.setBounds(165, 150, 330, 32);
         add(textField_1);
 
-        JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento");
-        lblFechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblFechaNacimiento.setBounds(28, 267, 126, 16);
-        add(lblFechaNacimiento);
-
-        textField_3 = new JTextField();
-        textField_3.setColumns(10);
-        textField_3.setBounds(165, 260, 330, 32);
-        add(textField_3);
-
         JLabel lblCorreoElectrnico = new JLabel("Correo Electr\u00F3nico");
         lblCorreoElectrnico.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblCorreoElectrnico.setBounds(28, 322, 147, 16);
+        lblCorreoElectrnico.setBounds(28, 268, 147, 16);
         add(lblCorreoElectrnico);
 
         textField_5 = new JTextField();
         textField_5.setColumns(10);
-        textField_5.setBounds(165, 315, 330, 32);
+        textField_5.setBounds(165, 261, 330, 32);
         add(textField_5);
         
 		JLabel lblEspecialidad = new JLabel("Historial Cl\u00EDnico");
 		lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblEspecialidad.setBounds(28, 377, 147, 16);
+		lblEspecialidad.setBounds(28, 323, 147, 16);
 		add(lblEspecialidad);
 
 		
@@ -141,11 +130,11 @@ public class RegPacientes extends JPanel {
 			}
 
 		});
-		btnConsultas.setBounds(165, 370, 120, 32);
+		btnConsultas.setBounds(165, 316, 120, 32);
 		add(btnConsultas);
 		JLabel lblVacunas = new JLabel("Vacunas");
 		lblVacunas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblVacunas.setBounds(28, 432, 147, 16);
+		lblVacunas.setBounds(28, 378, 147, 16);
 		add(lblVacunas);
 
 		JButton btnAdministrar = new JButton("Administrar");
@@ -162,7 +151,7 @@ public class RegPacientes extends JPanel {
 
 		});
 
-		btnAdministrar.setBounds(165, 425, 120, 32);
+		btnAdministrar.setBounds(165, 371, 120, 32);
 
 		add(btnAdministrar);
 
@@ -175,7 +164,6 @@ public class RegPacientes extends JPanel {
         idCita.setText("");
         textField_1.setText("");
         textField.setText("");
-        textField_3.setText("");
         textField_5.setText("");
     }
 }
