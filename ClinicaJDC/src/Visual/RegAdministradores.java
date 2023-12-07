@@ -18,7 +18,6 @@ public class RegAdministradores extends JPanel {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
@@ -106,34 +105,24 @@ public class RegAdministradores extends JPanel {
 		textField_1.setBounds(165, 150, 330, 32);
 		add(textField_1);
 		
-		JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento");
-		lblFechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblFechaNacimiento.setBounds(28, 267, 126, 16);
-		add(lblFechaNacimiento);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(165, 260, 330, 32);
-		add(textField_3);
-		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(165, 315, 330, 32);
+		textField_4.setBounds(165, 260, 330, 32);
 		add(textField_4);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono");
 		lblTelfono.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTelfono.setBounds(28, 323, 126, 16);
+		lblTelfono.setBounds(28, 268, 126, 16);
 		add(lblTelfono);
 		
 		JLabel lblCorreoElectrnico = new JLabel("Correo Electr\u00F3nico");
 		lblCorreoElectrnico.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCorreoElectrnico.setBounds(28, 377, 147, 16);
+		lblCorreoElectrnico.setBounds(28, 322, 147, 16);
 		add(lblCorreoElectrnico);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(165, 370, 330, 32);
+		textField_5.setBounds(165, 315, 330, 32);
 		add(textField_5);
 		
 		JLabel lblUsuario = new JLabel("Usuario");

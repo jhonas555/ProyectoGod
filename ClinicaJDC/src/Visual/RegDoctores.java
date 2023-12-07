@@ -26,7 +26,6 @@ public class RegDoctores extends JPanel {
     private JTable table;
     private JTextField txtApellido;
     private JTextField txtNombre;
-    private JTextField txtFecha;
     private JTextField txtTelefono;
     private JTextField txtCorreo;
     private JTextField txtEspecialidad;
@@ -77,8 +76,9 @@ public class RegDoctores extends JPanel {
         });
         btnNewButton.setBounds(900, 595, 120, 32);
         add(btnNewButton);
+        btnNewButton.setEnabled(true);
 
-        JButton btnModificar = new JButton("Guardar");
+        JButton btnModificar = new JButton("Modificar");
         btnModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
@@ -86,6 +86,7 @@ public class RegDoctores extends JPanel {
         });
         btnModificar.setBounds(768, 595, 120, 32);
         add(btnModificar);
+        btnModificar.setEnabled(false);
 
         JButton btnEliminar = new JButton("Eliminar");
         btnEliminar.setBounds(636, 595, 120, 32);
@@ -119,55 +120,44 @@ public class RegDoctores extends JPanel {
         txtNombre.setBounds(165, 150, 330, 32);
         add(txtNombre);
 
-        JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento");
-        lblFechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblFechaNacimiento.setBounds(28, 267, 126, 16);
-        add(lblFechaNacimiento);
-
-        txtFecha = new JTextField();
-        txtFecha.setText("dd/mm/yyyy");
-        txtFecha.setColumns(10);
-        txtFecha.setBounds(165, 260, 330, 32);
-        add(txtFecha);
-
         txtTelefono = new JTextField();
         txtTelefono.setColumns(10);
-        txtTelefono.setBounds(165, 315, 330, 32);
+        txtTelefono.setBounds(165, 260, 330, 32);
         add(txtTelefono);
 
         JLabel lblTelfono = new JLabel("Tel\u00E9fono");
         lblTelfono.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblTelfono.setBounds(28, 323, 126, 16);
+        lblTelfono.setBounds(28, 268, 126, 16);
         add(lblTelfono);
 
         JLabel lblCorreoElectrnico = new JLabel("Correo Electr\u00F3nico");
         lblCorreoElectrnico.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblCorreoElectrnico.setBounds(28, 377, 147, 16);
+        lblCorreoElectrnico.setBounds(28, 322, 147, 16);
         add(lblCorreoElectrnico);
 
         txtCorreo = new JTextField();
         txtCorreo.setColumns(10);
-        txtCorreo.setBounds(165, 370, 330, 32);
+        txtCorreo.setBounds(165, 315, 330, 32);
         add(txtCorreo);
 
         txtEspecialidad = new JTextField();
         txtEspecialidad.setColumns(10);
-        txtEspecialidad.setBounds(165, 425, 330, 32);
+        txtEspecialidad.setBounds(165, 370, 330, 32);
         add(txtEspecialidad);
 
         JLabel lblEspecialidad = new JLabel("Especialidad");
         lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblEspecialidad.setBounds(28, 432, 147, 16);
+        lblEspecialidad.setBounds(28, 377, 147, 16);
         add(lblEspecialidad);
 
         txtLicencia = new JTextField();
         txtLicencia.setColumns(10);
-        txtLicencia.setBounds(165, 480, 330, 32);
+        txtLicencia.setBounds(165, 425, 330, 32);
         add(txtLicencia);
 
         JLabel lblLicenciaMdica = new JLabel("Licencia M\u00E9dica");
         lblLicenciaMdica.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblLicenciaMdica.setBounds(28, 487, 147, 16);
+        lblLicenciaMdica.setBounds(28, 432, 147, 16);
         add(lblLicenciaMdica);
 
         JLabel label = new JLabel("Contrase\u00F1a");
@@ -192,12 +182,12 @@ public class RegDoctores extends JPanel {
         
         JLabel lblCdula = new JLabel("C\u00E9dula");
         lblCdula.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblCdula.setBounds(28, 542, 147, 16);
+        lblCdula.setBounds(28, 487, 147, 16);
         add(lblCdula);
         
         txtCedula = new JTextField();
         txtCedula.setColumns(10);
-        txtCedula.setBounds(165, 535, 330, 32);
+        txtCedula.setBounds(165, 480, 330, 32);
         add(txtCedula);
     }
 
@@ -209,12 +199,11 @@ public class RegDoctores extends JPanel {
     			txtCedula.getText(), 
     			txtNombre.getText(), 
     			txtApellido.getText(), 
-    			obtenerFechaDesdeTextField(txtFecha.getText()), 
     			txtTelefono.getText(), 
     			txtCorreo.getText()
     			);
     	
-        Clinica.getInstance().agregarPersona(doctor);
+        //Clinica.getInstance().agregarPersona(doctor);
         JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Registro", JOptionPane.INFORMATION_MESSAGE);
         clean();
         
@@ -225,7 +214,7 @@ public class RegDoctores extends JPanel {
         txtId.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtFecha.setText("");
+        //txtFecha.setText("");
         txtTelefono.setText("");
         txtCorreo.setText("");
         txtEspecialidad.setText("");
@@ -245,6 +234,7 @@ public class RegDoctores extends JPanel {
             return fecha;
         } catch (ParseException e) {
             // La excepción ocurre si la fecha no es válida
+        	
             return null;
         }
     }

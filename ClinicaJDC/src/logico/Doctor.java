@@ -17,9 +17,9 @@ public class Doctor extends Persona {
 	private String numeroLicenciaMedica;
 	private String Especialidad;
 
-	public Doctor(String id, String password, String cedula, String nombre, String apellido, Date fechaNacimiento,
+	public Doctor(String id, String password, String cedula, String nombre, String apellido,
 			String telefono, String correoElectronico) {
-		super(id, password, cedula, nombre, apellido, fechaNacimiento, telefono, correoElectronico);
+		super(id, password, cedula, nombre, apellido, telefono, correoElectronico);
 	}	
 	
 
