@@ -3,6 +3,8 @@ package Visual;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -12,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
+import logico.Clinica;
 import logico.Doctor;
 
 public class RegDoctores extends JPanel {
@@ -199,21 +202,13 @@ public class RegDoctores extends JPanel {
         Doctor doctor = new Doctor(id, contrasena, "", nombre, apellido, null, telefono, correoElectronico);
         doctor.setEspecialidad(especialidad);
         doctor.setNumeroLicenciaMedica(licenciaMedica);
-
-        try {
-            // Guardar los datos del doctor en el archivo
-            doctor.guardarDatos();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Puedes manejar la excepción de alguna manera (por ejemplo, mostrar un mensaje de error)
-        }
-
-        // Limpiar los campos después de agregar el doctor
-        limpiarCampos();
+        JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Registro", JOptionPane.INFORMATION_MESSAGE);
+        Clinica.getInstance().agregarDoctor(doctor);
+        clean();
     }
 
     // Método para limpiar los campos después de agregar un doctor
-    private void limpiarCampos() {
+    private void clean() {
         idCita.setText("");
         textField_1.setText("");
         textField.setText("");
