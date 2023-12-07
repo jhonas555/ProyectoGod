@@ -92,6 +92,12 @@ public class RegViviendas extends JPanel {
 		add(lblPeronas);
 		
 		JButton btnAdministrar = new JButton("Administrar");
+		btnAdministrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listViviendaPersonas ventanaViviendaPersonas = new listViviendaPersonas();
+				ventanaViviendaPersonas.setVisible(true);
+			}
+		});
 		btnAdministrar.setBounds(165, 205, 120, 32);
 		add(btnAdministrar);
 	}

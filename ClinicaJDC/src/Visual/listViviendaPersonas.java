@@ -20,31 +20,31 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import logico.Clinica;
-import logico.Enfermedad;
+import logico.Persona;
 
-public class listEnfermedadesTratadas extends JDialog {
+public class listViviendaPersonas extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnListo;
 	private JButton btnPasar;
-	private JTable tblEnfermedades;
-	private JTable tblenfTratada;
+	private JTable tblPersonas;
+	private JTable tblVivePersona;
 	
-	private static ArrayList<Enfermedad> listaEnfermedades = Clinica.getInstance().getLasEnfermedades();
-	private static ArrayList<Enfermedad> listaEnfTratadas = new ArrayList<Enfermedad>();
-	private static DefaultTableModel modelEnfermedad;
-	private static DefaultTableModel modelenfTratada;
-	private static Object[] rowEnfermedad;
-	private static Object[] rowenfTratada;
-	private Enfermedad enfSeleccionada = null;
-	private Enfermedad tratadaSeleccionada = null;
+	private static ArrayList<Persona> listaPersonas = Clinica.getInstance().getLasPersonas();
+	private static ArrayList<Persona> listaVivePersonas = new ArrayList<Persona>();
+	private static DefaultTableModel modelPersona;
+	private static DefaultTableModel modelVivePersona;
+	private static Object[] rowPersona;
+	private static Object[] rowVivePersona;
+	private Persona PerSeleccionada = null;
+	private Persona PersonaSeleccionada = null;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			listEnfermedadesTratadas dialog = new listEnfermedadesTratadas();
+			listViviendaPersonas dialog = new listViviendaPersonas();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class listEnfermedadesTratadas extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public listEnfermedadesTratadas() {
+	public listViviendaPersonas() {
 		setResizable(false);
 		setLocationRelativeTo(null); 
 		setBounds(650, 200, 713, 325);
@@ -65,72 +65,72 @@ public class listEnfermedadesTratadas extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JPanel panelListado = new JPanel();
-			panelListado.setBorder(new TitledBorder(null, "Administrar Enfermedades Tratadas Por Vacunas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panelListado.setBorder(new TitledBorder(null, "Administrar Personas en la Vivienda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panelListado.setBounds(10, 11, 675, 240);
 			contentPanel.add(panelListado);
 			panelListado.setLayout(null);
 			{
-				JPanel panelEnfermedades = new JPanel();
-				panelEnfermedades.setBorder(new TitledBorder(null, "Lista de Enfermedades", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				panelEnfermedades.setBounds(10, 23, 298, 176);
-				panelListado.add(panelEnfermedades);
-				panelEnfermedades.setLayout(new BorderLayout(0, 0));
+				JPanel panelPersonas = new JPanel();
+				panelPersonas.setBorder(new TitledBorder(null, "Lista de Personas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				panelPersonas.setBounds(10, 23, 298, 176);
+				panelListado.add(panelPersonas);
+				panelPersonas.setLayout(new BorderLayout(0, 0));
 				{
 					JScrollPane scrollPane = new JScrollPane();
 					scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-					panelEnfermedades.add(scrollPane, BorderLayout.CENTER);
+					panelPersonas.add(scrollPane, BorderLayout.CENTER);
 					
-					String[] headerEnfermedades = {"Enfermedades"};
-					modelEnfermedad = new DefaultTableModel();
-					modelEnfermedad.setColumnIdentifiers(headerEnfermedades);
-					tblEnfermedades = new JTable();
-					tblEnfermedades.addMouseListener(new MouseAdapter() {
+					String[] headerPersonas = {"Personas"};
+					modelPersona = new DefaultTableModel();
+					modelPersona.setColumnIdentifiers(headerPersonas);
+					tblPersonas = new JTable();
+					tblPersonas.addMouseListener(new MouseAdapter() {
 						public void mouseClicked(MouseEvent e) {
-							int index = tblEnfermedades.getSelectedRow();
+							int index = tblPersonas.getSelectedRow();
 							if(index>=0)
 							{
-								enfSeleccionada = listaEnfermedades.get(index);
-								tratadaSeleccionada = null;
+								PerSeleccionada = listaPersonas.get(index);
+								PersonaSeleccionada = null;
 								btnPasar.setText(">>");
 								btnPasar.setEnabled(true);
 							}
 						}
 					});
-					tblEnfermedades.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					tblEnfermedades.setModel(modelEnfermedad);
-					scrollPane.setViewportView(tblEnfermedades);
+					tblPersonas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					tblPersonas.setModel(modelPersona);
+					scrollPane.setViewportView(tblPersonas);
 				}
 			}
 			{
-				JPanel panelEnfTratadas = new JPanel();
-				panelEnfTratadas.setBorder(new TitledBorder(null, "Enfermedades Tratadas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				panelEnfTratadas.setBounds(367, 23, 298, 176);
-				panelListado.add(panelEnfTratadas);
-				panelEnfTratadas.setLayout(new BorderLayout(0, 0));
+				JPanel panelVivePersonas = new JPanel();
+				panelVivePersonas.setBorder(new TitledBorder(null, "Pertenecen a esta vivienda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				panelVivePersonas.setBounds(367, 23, 298, 176);
+				panelListado.add(panelVivePersonas);
+				panelVivePersonas.setLayout(new BorderLayout(0, 0));
 				
 				JScrollPane scrollPane = new JScrollPane();
 				scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-				panelEnfTratadas.add(scrollPane, BorderLayout.CENTER);
+				panelVivePersonas.add(scrollPane, BorderLayout.CENTER);
 				
-				tblenfTratada = new JTable();
-				String[] headerenfTratada = {"Enfermedades"};
-				modelenfTratada = new DefaultTableModel();
-				modelenfTratada.setColumnIdentifiers(headerenfTratada);
-				tblenfTratada.addMouseListener(new MouseAdapter() {
+				tblVivePersona = new JTable();
+				String[] headerVivePersona = {"Personas"};
+				modelVivePersona = new DefaultTableModel();
+				modelVivePersona.setColumnIdentifiers(headerVivePersona);
+				tblVivePersona.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						int index = tblenfTratada.getSelectedRow();
+						int index = tblVivePersona.getSelectedRow();
 						if(index>=0)
 						{
-							tratadaSeleccionada = listaEnfTratadas.get(index);
-							enfSeleccionada = null;
+							PersonaSeleccionada = listaVivePersonas.get(index);
+							PerSeleccionada = null;
 							btnPasar.setText("<<");
 							btnPasar.setEnabled(true);
 						}
 					}
 				});
-				tblenfTratada.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				tblenfTratada.setModel(modelenfTratada);
-				scrollPane.setViewportView(tblenfTratada);
+				tblVivePersona.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				tblVivePersona.setModel(modelVivePersona);
+				scrollPane.setViewportView(tblVivePersona);
 			}
 			{
 				btnPasar = new JButton(">>");
@@ -138,13 +138,13 @@ public class listEnfermedadesTratadas extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						btnPasar.setEnabled(false);
 						btnPasar.setText("");
-						if(enfSeleccionada!= null)
+						if(PerSeleccionada!= null)
 						{
-							listaEnfTratadas.add(enfSeleccionada);
-							listaEnfermedades.remove(enfSeleccionada);
+							listaVivePersonas.add(PerSeleccionada);
+							listaPersonas.remove(PerSeleccionada);
 						}
-						imprimirenfTratada();
-						imprimirEnfermedades();
+						imprimirVivePersona();
+						imprimirPersonas();
 						habilitarBotonListo();
 					}
 				});
@@ -158,12 +158,12 @@ public class listEnfermedadesTratadas extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					btnPasar.setEnabled(false);
 					btnPasar.setText("");
-					if(enfSeleccionada != null) {
-						listaEnfermedades.add(tratadaSeleccionada);
-						listaEnfTratadas.remove(tratadaSeleccionada);
+					if(PerSeleccionada != null) {
+						listaPersonas.add(PersonaSeleccionada);
+						listaVivePersonas.remove(PersonaSeleccionada);
 					}
-					imprimirenfTratada();
-					imprimirEnfermedades();
+					imprimirVivePersona();
+					imprimirPersonas();
 					habilitarBotonListo();
 				}
 			});
@@ -199,13 +199,13 @@ public class listEnfermedadesTratadas extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
-		imprimirenfTratada();
-		imprimirEnfermedades();
+		imprimirVivePersona();
+		imprimirPersonas();
 	}
 
 
 	private void habilitarBotonListo() {
-		if(tblenfTratada.getRowCount() > 0)
+		if(tblVivePersona.getRowCount() > 0)
 		{
 			btnListo.setEnabled(true);
 			return;
@@ -213,23 +213,23 @@ public class listEnfermedadesTratadas extends JDialog {
 		btnListo.setEnabled(false);
 	}
 	
-	public static void imprimirEnfermedades()
+	public static void imprimirPersonas()
 	{
-		modelEnfermedad.setRowCount(0);
-		rowEnfermedad = new Object[modelEnfermedad.getColumnCount()];
-		for (Enfermedad Enfermedad : listaEnfermedades) {
-			rowEnfermedad[0] = Enfermedad.getClass().getSimpleName();
-			modelEnfermedad.addRow(rowEnfermedad);
+		modelPersona.setRowCount(0);
+		rowPersona = new Object[modelPersona.getColumnCount()];
+		for (Persona Persona : listaPersonas) {
+			rowPersona[0] = Persona.getClass().getSimpleName();
+			modelPersona.addRow(rowPersona);
 		}
 	}
 	
-	public static void imprimirenfTratada()
+	public static void imprimirVivePersona()
 	{
-		modelenfTratada.setRowCount(0);
-		rowenfTratada = new Object[modelenfTratada.getColumnCount()];
-		for (Enfermedad Enfermedad : listaEnfTratadas) {
-			rowenfTratada[0] = Enfermedad.getClass().getSimpleName();
-			modelenfTratada.addRow(rowenfTratada);
+		modelVivePersona.setRowCount(0);
+		rowVivePersona = new Object[modelVivePersona.getColumnCount()];
+		for (Persona Persona : listaVivePersonas) {
+			rowVivePersona[0] = Persona.getClass().getSimpleName();
+			modelVivePersona.addRow(rowVivePersona);
 		}
 	}
 }
