@@ -203,7 +203,7 @@ public class RegDoctores extends JPanel {
     			txtCorreo.getText()
     			);
     	
-        //Clinica.getInstance().agregarPersona(doctor);
+        
         JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Registro", JOptionPane.INFORMATION_MESSAGE);
         clean();
         

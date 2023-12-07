@@ -301,7 +301,9 @@ public class Clinica implements Serializable{
 	        
 	        return viviendas;
 	    }   
-	} 
+	}
+
+	
 	
 	
 	
