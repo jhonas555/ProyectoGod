@@ -107,6 +107,12 @@ public class RegVacunas extends JPanel {
 		add(lblEnfermedades);
 		
 		JButton btnAdministrar = new JButton("Administrar");
+		btnAdministrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listEnfermedadesTratadas ventanaEnfermedades = new listEnfermedadesTratadas();
+                ventanaEnfermedades.setVisible(true);
+			}
+		});
 		btnAdministrar.setBounds(165, 260, 120, 32);
 		add(btnAdministrar);
 	}
