@@ -54,22 +54,22 @@ public class Clinica implements Serializable{
 	        if (loadedEnfermedades != null && !loadedEnfermedades.isEmpty()) {
 	            clinica.lasEnfermedades = loadedEnfermedades;
 
-	            // Find the maximum ID among the loaded Enfermedades
+	            
 	            int maxId = loadedEnfermedades.stream()
 	                    .map(enfermedad -> extractId(enfermedad.getId()))
 	                    .max(Integer::compare)
 	                    .orElse(0);
 
-	            // Update idEnfermedades to 1 more than the maximum ID
+	            
 	            idEnfermedades = maxId + 1;
 	        } else {
 	            clinica.lasEnfermedades = new ArrayList<>();
 	        }
 	    } catch (FileNotFoundException fileNotFoundException) {
-	        // If the file does not exist, create it and initialize the ArrayList
+	        
 	        clinica.lasEnfermedades = new ArrayList<>();
 	    } catch (EOFException e) {
-	        // Handle the end of file exception if needed
+	        
 	    } catch (IOException | ClassNotFoundException e) {
 	        e.printStackTrace();
 	    }
@@ -79,7 +79,7 @@ public class Clinica implements Serializable{
 	    try {
 	        return Integer.parseInt(id);
 	    } catch (NumberFormatException e) {
-	        return 0; // Handle non-integer IDs gracefully
+	        return 0;
 	    }
 	}
 	
@@ -131,20 +131,20 @@ public class Clinica implements Serializable{
 
 
 	public void agregarEnfermedad(Enfermedad enfermedad) {
-	    // Assign a unique ID to the new Enfermedad
+	    
 	    enfermedad.setId(String.valueOf(idEnfermedades++));
 
 	    lasEnfermedades.add(enfermedad);
 
-	    // Save the updated list to the file
+	    
 	    guardarEnfermedadesEnArchivo();
 	}
 
 	public void eliminarEnfermedad(String id) {
-	    // Find the Enfermedad with the specified ID and remove it
+	    
 	    lasEnfermedades.removeIf(enfermedad -> enfermedad.getId().equals(id));
 
-	    // Save the updated list to the file
+	   
 	    guardarEnfermedadesEnArchivo();
 	}
 	
@@ -155,12 +155,12 @@ public class Clinica implements Serializable{
 	            enfermedad.setNombre(nuevaEnfermedad.getNombre());
 	            enfermedad.setDescripcion(nuevaEnfermedad.getDescripcion());
 
-	            // No need to continue checking once the match is found
+	            
 	            break;
 	        }
 	    }
 
-	    // Now you can save the updated ArrayList to a file if needed
+	    
 	    guardarEnfermedadesEnArchivo();
 	}
 
