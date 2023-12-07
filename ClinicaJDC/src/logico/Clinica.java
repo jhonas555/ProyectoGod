@@ -3,6 +3,7 @@ package logico;
 import java.io.EOFException;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,12 +37,50 @@ public class Clinica implements Serializable{
 		this.lasEnfermedades = new ArrayList<>();
 		this.lasPersonas = new ArrayList<>();
 	}
+	
+	
 
 	public static Clinica getInstance() {
 		if(clinica == null) {
 			clinica = new Clinica();
 		}
+		cargarEnfermedadesDesdeArchivo();
 		return clinica;
+	}
+	
+	public static void cargarEnfermedadesDesdeArchivo() {
+	    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enfermedades.dat"))) {
+	        ArrayList<Enfermedad> loadedEnfermedades = (ArrayList<Enfermedad>) ois.readObject();
+	        if (loadedEnfermedades != null && !loadedEnfermedades.isEmpty()) {
+	            clinica.lasEnfermedades = loadedEnfermedades;
+
+	            // Find the maximum ID among the loaded Enfermedades
+	            int maxId = loadedEnfermedades.stream()
+	                    .map(enfermedad -> extractId(enfermedad.getId()))
+	                    .max(Integer::compare)
+	                    .orElse(0);
+
+	            // Update idEnfermedades to 1 more than the maximum ID
+	            idEnfermedades = maxId + 1;
+	        } else {
+	            clinica.lasEnfermedades = new ArrayList<>();
+	        }
+	    } catch (FileNotFoundException fileNotFoundException) {
+	        // If the file does not exist, create it and initialize the ArrayList
+	        clinica.lasEnfermedades = new ArrayList<>();
+	    } catch (EOFException e) {
+	        // Handle the end of file exception if needed
+	    } catch (IOException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	private static int extractId(String id) {
+	    try {
+	        return Integer.parseInt(id);
+	    } catch (NumberFormatException e) {
+	        return 0; // Handle non-integer IDs gracefully
+	    }
 	}
 	
 	public ArrayList<Vacuna> getLasVacunas() {
@@ -92,27 +131,47 @@ public class Clinica implements Serializable{
 
 
 	public void agregarEnfermedad(Enfermedad enfermedad) {
+	    // Assign a unique ID to the new Enfermedad
+	    enfermedad.setId(String.valueOf(idEnfermedades++));
+
 	    lasEnfermedades.add(enfermedad);
-	    idEnfermedades++;
 
-	    try (FileOutputStream f = new FileOutputStream("lasEnfermedades.dat");
-	         ObjectOutputStream oos = new ObjectOutputStream(f)) {
+	    // Save the updated list to the file
+	    guardarEnfermedadesEnArchivo();
+	}
 
-	        oos.writeInt(lasEnfermedades.size());
+	public void eliminarEnfermedad(String id) {
+	    // Find the Enfermedad with the specified ID and remove it
+	    lasEnfermedades.removeIf(enfermedad -> enfermedad.getId().equals(id));
 
-	        for (Enfermedad e : lasEnfermedades) {
-	            oos.writeObject(e);
+	    // Save the updated list to the file
+	    guardarEnfermedadesEnArchivo();
+	}
+	
+	public void actualizarEnfermedad(String id, Enfermedad nuevaEnfermedad) {
+	    for (Enfermedad enfermedad : lasEnfermedades) {
+	        if (enfermedad.getId().equals(id)) {
+	            // Update the existing Enfermedad with the new one
+	            enfermedad.setNombre(nuevaEnfermedad.getNombre());
+	            enfermedad.setDescripcion(nuevaEnfermedad.getDescripcion());
+
+	            // No need to continue checking once the match is found
+	            break;
 	        }
+	    }
 
+	    // Now you can save the updated ArrayList to a file if needed
+	    guardarEnfermedadesEnArchivo();
+	}
+
+	private void guardarEnfermedadesEnArchivo() {
+	    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("enfermedades.dat"))) {
+	        oos.writeObject(lasEnfermedades);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
 	}
-
-	public void eliminarEnfermedad(Enfermedad enfermedad) {
-		lasEnfermedades.remove(enfermedad);
-	}
-	
+	/*
     public void actualizarEnfermedad(String id, Enfermedad nuevaEnfermedad) {
         ArrayList<Enfermedad> enfermedades = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("enfermedades.dat"))) {
@@ -137,7 +196,7 @@ public class Clinica implements Serializable{
             e.printStackTrace();
         }
     }
-
+*/
 	
 	public Enfermedad buscarEnfermedadPorId(String id) {
 		for (Enfermedad enfermedad : lasEnfermedades) {

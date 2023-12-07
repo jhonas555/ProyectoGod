@@ -63,7 +63,7 @@ public class RegEnfermedades extends JPanel {
 		add(txtId);
 		txtId.setColumns(10);
 		txtId.setEditable(false);
-		txtId.setText(""+Clinica.getIdEnfermedades());
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(1032, 13, 860, 870);
@@ -187,7 +187,8 @@ public class RegEnfermedades extends JPanel {
 		
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Clinica.getInstance().eliminarEnfermedad(enfermedadselec);
+				Enfermedad enfermedad = new Enfermedad(txtId.getText(), txtNombre.getText(), txtDescripcion.getText());
+				Clinica.getInstance().eliminarEnfermedad(enfermedad.getId());
 				clean();
 				loadEnfermedades();
 				
@@ -199,7 +200,7 @@ public class RegEnfermedades extends JPanel {
 		
 		
 		loadEnfermedades();
-		
+		txtId.setText(""+Clinica.getIdEnfermedades());
 	}
 	
 	private void clean() {
