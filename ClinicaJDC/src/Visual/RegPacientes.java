@@ -165,6 +165,8 @@ public class RegPacientes extends JPanel {
 		JButton btnAdministrar = new JButton("Administrar");
 		btnAdministrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				listVacunasPuestas ventanaVacunas = new listVacunasPuestas();
+				ventanaVacunas.setVisible(true);
 			}
 		});
 		btnAdministrar.setBounds(165, 480, 120, 32);
