@@ -65,7 +65,7 @@ public class listVacunasPuestas extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JPanel panelListado = new JPanel();
-			panelListado.setBorder(new TitledBorder(null, "Vacunas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panelListado.setBorder(new TitledBorder(null, "Administrar Vacunas Puestas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panelListado.setBounds(10, 11, 675, 240);
 			contentPanel.add(panelListado);
 			panelListado.setLayout(null);
